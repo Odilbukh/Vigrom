@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::apiResource('/users', \App\Http\Controllers\UserController::class);
-Route::apiResource('/wallets', \App\Http\Controllers\WalletController::class)->except('update');
-Route::get('/transactions', [\App\Http\Controllers\TransactionController::class, 'index']);
-Route::get('/transactions/{id}', [\App\Http\Controllers\TransactionController::class, 'show']);
-Route::post('/transactions', [\App\Http\Controllers\TransactionController::class, 'create']);
+Route::apiResource('/users', UserController::class);
+Route::apiResource('/wallets', WalletController::class)->except('update');
+Route::get('/transactions', [TransactionController::class, 'index']);
+Route::get('/transactions/{id}', [TransactionController::class, 'show']);
+Route::post('/transactions', [TransactionController::class, 'create']);
 
 
