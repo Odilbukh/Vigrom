@@ -16,12 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
 Route::apiResource('/users', UserController::class);
+
 Route::apiResource('/wallets', WalletController::class)->except('update');
+
 Route::get('/transactions', [TransactionController::class, 'index']);
 Route::get('/transactions/{id}', [TransactionController::class, 'show']);
 Route::post('/transactions', [TransactionController::class, 'create']);

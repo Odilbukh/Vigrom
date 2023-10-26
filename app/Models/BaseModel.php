@@ -13,6 +13,7 @@ class BaseModel extends Model
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s'
     ];
+
     public function queryFilter($request): array
     {
         $modelQuery = self::when(
@@ -20,7 +21,7 @@ class BaseModel extends Model
             function ($query) use ($request) {
                 $select = [];
                 foreach ($request['meta'] as $field) {
-                    if (in_array($field, self::getAttributes(), true)) {
+                    if (in_array($field, self::getFillable(), true)) {
                         $select[] = $field;
                     }
                     if (array_key_exists($field, self::getRelations())) {
