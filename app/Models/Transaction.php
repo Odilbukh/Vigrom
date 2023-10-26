@@ -12,6 +12,7 @@ class Transaction extends BaseModel
     use SoftDeletes;
 
     protected $table = 'transactions';
+
     protected $fillable = [
         'id',
         'amount',

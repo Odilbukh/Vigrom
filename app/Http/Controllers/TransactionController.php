@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTransactionRequest;
 use App\Http\Requests\GetListTransactionRequest;
-use App\Http\Requests\GetListWalletRequest;
 use App\Services\TransactionService;
 use Illuminate\Http\JsonResponse;
 

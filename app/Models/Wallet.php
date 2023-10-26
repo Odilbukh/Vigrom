@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\DB;
 
 class Wallet extends BaseModel
 {
@@ -14,6 +13,7 @@ class Wallet extends BaseModel
     use SoftDeletes;
 
     protected $table = 'wallets';
+
     protected $fillable = [
         'id',
         'balance',
