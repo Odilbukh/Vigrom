@@ -26,7 +26,9 @@ class BaseService
 
     public function store($request)
     {
-        return $this->model->create($request);
+        $result = $this->model->create($request);
+
+        return $this->sendResponse($result, 'Model created successfully');
     }
 
     public function show(int $id)
@@ -42,6 +44,19 @@ class BaseService
         }
 
         return $this->sendResponse($result, 'Model retrieved successfully');
+    }
+
+    public function update($request, $id)
+    {
+        $result = $this->model->find($id);
+
+        if (is_null($result)) {
+            return $this->sendError();
+        }
+
+        $result->update($request);
+
+        return $this->sendResponse($result->refresh(), 'Model updated successfully');
     }
 
 
